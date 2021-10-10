@@ -1,6 +1,7 @@
-import React, { lazy, useEffect, useState } from "react";
-import { Link, Route } from "react-router-dom";
-import { getSearchMovie } from "../services/api";
+import React, {useEffect, useState } from "react";
+import MoviesList from "../../components/moviesList/MoviesList";
+import { getSearchMovie } from "../../services/api";
+import { MoviePageStyled } from "./MoviePageStyled";
 
 const MoviesPage = ({ location, match, history }) => {
   const [nameSearch, setNameMovie] = useState("");
@@ -23,6 +24,7 @@ const MoviesPage = ({ location, match, history }) => {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
+    console.log('ok');
     if (nameSearch === "") {
       return;
     }
@@ -32,37 +34,35 @@ const MoviesPage = ({ location, match, history }) => {
     history.push({ ...location, search: `?query=${nameSearch}` });
     setNameMovie("");
   };
+
   return (
-    <>
-      <form onSubmit={onHandleSubmit}>
-        <label>
+    <MoviePageStyled>
+      <form className ='movieForm' onSubmit={onHandleSubmit}>
+        <label >
           <input
             type="text"
             name="movie"
+            placeholder="Enter the title of the movie !"
             // value={nameSearch}
             onChange={onHandleChange}
             className="movieInput"
           />
         </label>
-        <button type="submit">Search</button>
+        {nameSearch && (
+          <button type="submit" className="movieButton">
+            Search
+          </button>
+        )}
       </form>
       {moviesByName && (
-        <ul>
-          {moviesByName.map((movie) => (
-            <li key={movie.id}>
-              <Link
-                to={{
-                  pathname: `${match.path}/${movie.id}`,
-                  state: { from: location.pathname, search: nameSearch },
-                }}
-              >
-                {movie.original_title ? movie.original_title : movie.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <MoviesList
+          movies={moviesByName}
+          path={match.path}
+          location={location}
+          nameSearch={nameSearch}
+        />
       )}
-    </>
+    </MoviePageStyled>
   );
 };
 

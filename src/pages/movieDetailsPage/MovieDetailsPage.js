@@ -5,6 +5,7 @@ import { getMovieDetailsById } from "../../services/api";
 import { MovieDetailsPageStyled } from "./MovieDetailsPageStyled";
 import ButtonGoBack from "../../components/buttonGoBack/ButtonGoBack";
 import Navigation from "../../components/navigation/Navigation";
+import { getImage } from "../../helpers/getImage";
 
 const MovieDetailsPage = ({ location, history }) => {
   const match = useRouteMatch();
@@ -21,23 +22,22 @@ const MovieDetailsPage = ({ location, history }) => {
     }
   }, [movieId, location.state]);
 
-  const poster =
-    movie && movie.poster_path
-      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-      : `https://img.icons8.com/ios/452/image.png`;
+  const buttonGoBack = (
+    <ButtonGoBack
+      location={location}
+      history={history}
+      DataFromHistoryState={DataFromHistoryState}
+    />
+  );
 
   return (
     <>
       <MovieDetailsPageStyled>
         {movie ? (
           <>
-            <ButtonGoBack
-              location={location}
-              history={history}
-              DataFromHistoryState={DataFromHistoryState}
-            />
+            {buttonGoBack}
             <div className="wrapper">
-              <img className="image" src={poster} alt="poster" />
+              <img className="image" src={getImage(movie)} alt="poster" />
               <div className="contentWrapper">
                 <h2 className="title">
                   {movie.original_title ? movie.original_title : movie.name}
@@ -63,11 +63,7 @@ const MovieDetailsPage = ({ location, history }) => {
           </>
         ) : (
           <>
-            <ButtonGoBack
-              location={location}
-              history={history}
-              DataFromHistoryState={DataFromHistoryState}
-            />
+            {buttonGoBack}
             <h2 style={{ textAlign: "center" }}>
               No information about this film &#128679;
             </h2>

@@ -10,7 +10,7 @@ export const mainRoutes = [
   {
     name: "Movies",
     path: "/movies",
-    component: lazy(() => import('../pages/MoviesPage' /* webpackChunkName: "MoviesPage" */)),
+    component: lazy(() => import("../pages/moviesPage/MoviesPage" /* webpackChunkName: "MoviesPage" */)),
     exact: false,
   },
 ];

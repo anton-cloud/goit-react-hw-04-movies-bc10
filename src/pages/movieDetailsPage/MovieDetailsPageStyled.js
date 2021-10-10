@@ -11,25 +11,7 @@ export const MovieDetailsPageStyled = styled.div`
     padding-left: 10px;
   }
 
-
-  /* .NavigationList {
-    display: flex;
-    list-style: none;
-    justify-content: space-evenly;
-    padding: 10px 0;
-    margin: 0;
-
-    border-top: 2px solid aqua;
+  .image {
+    height: 500px;
   }
-
-  .NavigationLink {
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 700;
-    color: black;
-  }
-
-  .activeNavigationLink {
-    color: aqua;
-  } */
 `;

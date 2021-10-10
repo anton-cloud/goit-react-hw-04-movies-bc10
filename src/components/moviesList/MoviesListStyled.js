@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-export const CastStyled = styled.ul`
+export const MoviesListStyled = styled.ul`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  margin: 0;
+
+  margin-left: -20px;
+  margin-top: -20px;
   padding: 0;
 
-  border-top: 2px solid aqua;
-
-  .item {
+  .moviesItem {
     flex-basis: calc(100% / 2 - 20px);
     margin-left: 20px;
     margin-top: 20px;
@@ -34,13 +34,28 @@ export const CastStyled = styled.ul`
     }
   }
 
-  .image {
-    width: 300px;
+  .moviesImage {
+    width: 250px;
   }
 
-  .nameText {
-    font-size: 16px;
-    font-weight: 600;
+  .moviesLink {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .moviesText {
+    margin: 0;
+    padding-top: 5px;
+    background-color: transparent;
+    text-align: center;
     font-style: italic;
+    padding-top: 5px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .moviesItem:hover .moviesText {
+    color: aqua;
   }
 `;

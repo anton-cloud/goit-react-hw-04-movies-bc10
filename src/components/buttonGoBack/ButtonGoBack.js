@@ -1,8 +1,10 @@
 import React from "react";
+import { ButtonGoBackStyled } from "./ButtonGoBackStyled";
+
 
 const ButtonGoBack = ({ location, history, DataFromHistoryState }) => {
   const goBack = () => {
-    if (!DataFromHistoryState.search) {
+    if (DataFromHistoryState.search === true) {
       history.push({
         pathname: location?.state?.from ? location.state.from : "/",
       });
@@ -15,9 +17,9 @@ const ButtonGoBack = ({ location, history, DataFromHistoryState }) => {
   };
 
   return (
-    <button type="button" onClick={goBack}>
+    <ButtonGoBackStyled type="button" onClick={goBack}>
       Go Back
-    </button>
+    </ButtonGoBackStyled>
   );
 };
 

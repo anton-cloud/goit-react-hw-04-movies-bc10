@@ -1,11 +1,12 @@
 import React from 'react'
+import {SectionStyled} from './SectionStyled'
 
 const Section = ({title, children}) => {
   return (
-    <section>
-      <h2>{title}</h2>
+    <SectionStyled>
+      <h2 className='title'>{title}</h2>
       {children}
-    </section>
+    </SectionStyled>
   );
 }
 

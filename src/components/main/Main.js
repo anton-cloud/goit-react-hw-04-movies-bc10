@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-import NotFoundPage from "../../pages/NotFoundPage";
+// import NotFoundPage from "../../pages/NotFoundPage";
 
 import { mainRoutes } from "../../routes/mainRoutes";
 
@@ -21,7 +21,7 @@ const Main = () => {
           {mainRoutes.map(({ path, exact, component }) => (
             <Route path={path} exact={exact} component={component} key={path} />
           ))}
-          <Route component={NotFoundPage} />
+          <Redirect to="/" />
         </Switch>
       </Suspense>
     </>
@@ -29,3 +29,7 @@ const Main = () => {
 };
 
 export default Main;
+
+{
+  /* <Route component={NotFoundPage} /> */
+}
